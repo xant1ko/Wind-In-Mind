@@ -1,0 +1,86 @@
+@import url(fonts.css);
+
+:root {
+    --color-primary: #6B3FA6;
+
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary-1: #E0E0E0;
+    --color-text-secondary-2: #B87DE6;
+    --color-text-secondary-3: #9B4DCC;
+    --color-text-secondary-4: #7D2FA8;
+    --color-text-secondary-5: #4A1D6B;
+    --color-text-accent: #8A5FE6;
+
+    --bg-color-primary: #0A0A14;
+    --bg-color-secondary: #2A1A3A;
+
+    --color-elements-1: #9B6EFF;
+    --color-elements-2: #2A1F3A;
+    --color-elements-3: #7A4DCC;
+
+    --border-radius-primary: 8px;
+}
+
+.v-app-bar {
+    background-color: var(--color-primary);
+}
+
+.v-btn {
+    color: var(--color-text-primary) !important;
+}
+
+.outer-alert {
+    top: 0.5em;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 5vh;
+    left: 0;
+    right: 0;
+    width: calc(100% - 1em);
+    z-index: 10000 !important;
+    backdrop-filter: blur(10px);
+    border-radius: var(--border-radius-primary);
+}
+
+.v-field,
+.v-btn,
+.v-data-table,
+.v-card {
+    border-radius: var(--border-radius-primary) !important;
+}
+
+.v-app-bar-nav-icon,
+.v-toolbar-title {
+    color: var(--color-elements-2);
+}
+
+
+.v-btn.secondary {
+    background-color: var(--color-elements-1);
+}
+
+.v-btn.secondary.active {
+    background-color: var(--color-text-accent);
+}
+
+footer {
+    flex-grow: 0;
+    padding: 15px 0;
+    justify-content: center;
+    gap: 5px;
+    background-color: var(--color-text-secondary-5);
+}
+
+footer span {
+    font-size: 14px;
+}
+
+footer .version {
+    position: absolute;
+    font-size: 14px;
+    right: 18px;
+}
+
+/* .v-main {
+    padding: 148px;
+} */
