@@ -1,6 +1,6 @@
 import type { Task } from '@/utils/types'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 
 
@@ -8,7 +8,6 @@ import { ref } from 'vue'
 export const useTasksStore = defineStore(
   'user',
   () => {
-
     const tasks = ref<Task[]>([
       // FIRST PLAN - Высокий приоритет (срочные и важные задачи)
       {
@@ -197,10 +196,17 @@ export const useTasksStore = defineStore(
       }
     ])
 
+const firstPlanTasks = computed(() => tasks.value.filter(task => task.priority === 'firstPlan'))
+const secondPlanTasks = computed(() => tasks.value.filter(task => task.priority === 'secondplan'))
+const longDistanceTasks = computed(() => tasks.value.filter(task => task.priority === 'longDistance'))
+
     return {
-      tasks
+      tasks,
+      firstPlanTasks,
+      secondPlanTasks,
+      longDistanceTasks
     }
-  },
+    },
   {
     persist: true,
   },

@@ -4,6 +4,4 @@ export type Task = {
   description: string,
   dateCompleted: string,
   priority: 'firstPlan' | 'secondplan' | 'longDistance'
-
-
 }
