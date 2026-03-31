@@ -21,12 +21,34 @@
     --border-radius-primary: 8px;
 }
 
+.green{
+    background-color: rgba(0, 88, 0, 0.404) !important;
+}
+
+.red{
+    background-color: rgba(131, 0, 0, 0.336) !important;
+}
+
 .v-app-bar {
     background-color: var(--color-primary);
 }
 
 .v-list{
-    background-color: #00000000;
+    background-color: var(--color-text-secondary-5);
+}
+
+.v-btn{
+    background-color: var(--color-elements-2);
+}
+
+.v-card{
+    background-color: var(--bg-color-secondary);
+}
+
+.d-flex-column{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 h1,

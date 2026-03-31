@@ -10,86 +10,20 @@
       />
     </div>
     <section id="first-plan-priority">
-      <v-list v-model:opened="isOpen">
-        <v-list-group>
-          <template #activator="{ props }">
-            <v-list-item class="pa-0" v-bind="props">
-              <div class="d-flex align-center ga-2">
-                <h3>Приоритетные задачи</h3>
-                <v-chip size="small">
-                  {{ useTasksStore().firstPlanTasks.length }}
-                </v-chip>
-              </div>
-            </v-list-item>
-          </template>
-          <v-list-group value="firstPlan">
-            <v-card
-              v-for="task in useTasksStore().firstPlanTasks"
-              class="my-4 pa-4"
-            >
-              <h3>{{ task.title }}</h3>
-              <p>{{ task.description }}</p>
-            </v-card>
-          </v-list-group>
-        </v-list-group>
-      </v-list>
+      <task-list-component :items="useTasksStore().firstPlanTasks" title="Приоритетные задачи"/>
+    </section>
+    <section class="my-4" id="second-plan-priority">
+      <task-list-component :items="useTasksStore().secondPlanTasks" title="Задачи второго плана"/>
     </section>
     <section id="second-plan-priority">
-      <v-list v-model:opened="isOpen">
-        <v-list-group>
-          <template #activator="{ props }">
-            <v-list-item class="pa-0" v-bind="props">
-              <div class="d-flex align-center ga-2">
-                <h3>Задачи второго плана</h3>
-                <v-chip size="small">
-                  {{ useTasksStore().secondPlanTasks.length }}
-                </v-chip>
-              </div>
-            </v-list-item>
-          </template>
-          <v-list-group value="secondplan">
-            <v-card
-              v-for="task in useTasksStore().secondPlanTasks"
-              class="my-4 pa-4"
-            >
-              <h3>{{ task.title }}</h3>
-              <p>{{ task.description }}</p>
-            </v-card>
-          </v-list-group>
-        </v-list-group>
-      </v-list>
-    </section>
-    <section id="second-plan-priority">
-      <v-list v-model:opened="isOpen">
-        <v-list-group>
-          <template #activator="{ props }">
-            <v-list-item class="pa-0" v-bind="props">
-              <div class="d-flex align-center ga-2">
-                <h3>Задачи в долгую</h3>
-                <v-chip size="small">
-                  {{ useTasksStore().longDistanceTasks.length }}
-                </v-chip>
-              </div>
-            </v-list-item>
-          </template>
-          <v-list-group value="longDistance">
-            <v-card
-              v-for="task in useTasksStore().longDistanceTasks"
-              class="my-4 pa-4"
-            >
-              <h3>{{ task.title }}</h3>
-              <p>{{ task.description }}</p>
-            </v-card>
-          </v-list-group>
-        </v-list-group>
-      </v-list>
+      <task-list-component :items="useTasksStore().longDistanceTasks" title="Задачи в долгую"/>
     </section>
   </v-container>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { useTasksStore } from "@/stores/tasks";
+import TaskListComponent from "@/components/TaskListComponent.vue";
 
-const isOpen = ref(["firstPlan", "secondplan", "longDistance"]);
+
 </script>
