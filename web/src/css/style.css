@@ -25,6 +25,13 @@
     background-color: rgba(0, 88, 0, 0.404) !important;
 }
 
+.green-text {
+    color: green;
+}
+.red-text {
+    color: red;
+}
+
 .red{
     background-color: rgba(131, 0, 0, 0.336) !important;
 }
@@ -33,15 +40,15 @@
     background-color: var(--color-primary);
 }
 
-.v-list{
+/* .v-list{
     background-color: var(--color-text-secondary-5);
-}
+} */
 
 .v-btn{
     background-color: var(--color-elements-2);
 }
 
-.v-card{
+.v-card.secondary{
     background-color: var(--bg-color-secondary);
 }
 

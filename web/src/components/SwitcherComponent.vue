@@ -1,5 +1,6 @@
 <template>
-  <div
+  <div 
+  @click="model = !model"
     class="v-field v-field--active v-field--appended v-field--center-affix v-field--variant-solo-filled v-theme--dark v-field--dirty"
     style="
       border-top-left-radius: 4px;

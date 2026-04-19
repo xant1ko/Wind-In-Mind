@@ -86,9 +86,9 @@ onMounted(() => {
       },
     );
   }
-
-  axios.get(`${API_VERSION}`).then((r) => {
-    apiVersion.value = r.data.back_version;
-  });
+ 
+  // axios.get(`${API_VERSION}`).then((r) => {
+  //   apiVersion.value = r.data.back_version;
+  // });
 });
 </script>

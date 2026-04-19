@@ -5,9 +5,9 @@
         <v-list-item v-bind="props">
           <div class="d-flex align-center ga-2">
             <h3>{{ title }}</h3>
-            <v-chip size="small">
-              {{ items.length }}
-            </v-chip>
+            <!-- <v-chip size="small"> -->
+              <!-- {{ items.length }} -->
+            <!-- </v-chip> -->
           </div>
         </v-list-item>
       </template>
@@ -19,6 +19,7 @@
           >
             <div>
               <h3>{{ task.title }}</h3>
+              <p :class="task.isDone? 'green-text': '/'">({{task.isDone?'Выполнена':'Не выполнена'}})</p>
               <p>{{ task.description }}</p>
             </div>
             <div class="d-flex ga-1">

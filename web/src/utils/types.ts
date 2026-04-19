@@ -1,7 +1,7 @@
 export type Task = {
-
-  title: string,
-  description: string,
-  dateCompleted: string,
-  priority: 'firstPlan' | 'secondplan' | 'longDistance'
+  title?: string,
+  description?: string,
+  dateCompleted?: string,
+  priority?: 'firstPlan' | 'secondplan' | 'longDistance'
+  isDone?: boolean
 }
