@@ -20,6 +20,21 @@
 
     --border-radius-primary: 8px;
 }
+/* 'firstPlan' | 'secondplan' | 'longDistance' */
+.borderFirstPlan{
+    border: 1px solid rgb(160, 0, 0);
+}
+.borderSecondplan{
+    border: 1px solid rgb(160, 0, 133);
+    
+}
+.borderLongDistance{
+    border: 1px solid rgb(0, 29, 160);
+    
+}
+
+
+
 
 .green{
     background-color: rgba(0, 88, 0, 0.404) !important;
