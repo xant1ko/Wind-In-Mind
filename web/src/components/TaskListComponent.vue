@@ -13,21 +13,22 @@
       </template>
       <v-list-group class="pa-4" value="fuck">
         <div class="d-flex-column">
+          <!-- Карточка -->
           <v-card
           v-for="task in items"
-          :class="getBorderColor(task.priority)"
+          :class="[getBorderColor(task.priority), task.isDone? 'doneTaskCard': '']"
             class="pa-4 d-flex justify-space-between align-start"
           >
             <div>
               <h3>{{ task.title }}</h3>
-              <p :class="task.isDone? 'green-text': '/'">({{task.isDone?'Выполнена':'Не выполнена'}})</p>
               <p>{{ task.description }}</p>
             </div>
             <div class="d-flex ga-1">
-              <v-btn icon="mdi-check"></v-btn>
+              <v-btn @click="markTaskIsDone(task.uid)" icon="mdi-check"></v-btn>
               <v-btn icon="mdi-arrow-right"></v-btn>
             </div>
           </v-card>
+
         </div>
       </v-list-group>
     </v-list-group>
@@ -35,7 +36,9 @@
 </template>
 
 <script setup lang="ts">
+import { emitter } from "@/main";
 import type { Task } from "@/utils/types";
+import axios from "axios";
 import { ref } from "vue";
 
 defineProps<{
@@ -45,7 +48,12 @@ defineProps<{
 
 const isOpen = ref(["fuck"]);
 
-function getBorderColor(priority: string) {
+function markTaskIsDone(uid: string | undefined) {
+axios.post(`/api/task/resolve/${uid}`)
+emitter.emit('update')
+}
+
+function getBorderColor(priority?: string) {
   if (priority === 'firstPlan') {
     return 'borderFirstPlan'
   } else if (priority === 'secondplan') {

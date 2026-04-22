@@ -4,15 +4,12 @@ import { Task, tasks } from './tempo/test_tasks';
 @Injectable()
 export class AppService {
 
-  getHello(): string {
-    return 'Hello World!';
-  }
 
   getTasks(): Array<Object> {
     return tasks;
   }
 
-  createTask(taskValue: Task): any {
+  createTask(taskValue: Task): Task {
     const newTask: Task = {
       title:taskValue.title,
       description: taskValue.description,
@@ -23,5 +20,10 @@ export class AppService {
     }
     tasks.push(newTask)
     return newTask
+  } 
+
+  resolveTask(taskUid: string): void {
+    let needTaskIndex = tasks.findIndex(task=>task.uid === taskUid)
+    tasks[needTaskIndex].isDone = !tasks[needTaskIndex].isDone
   } 
 }

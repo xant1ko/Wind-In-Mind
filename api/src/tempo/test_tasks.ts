@@ -1,12 +1,13 @@
 
 
 export type Task = {
-    uid:string
-    title?: string,
-    description?: string,
-    dateCompleted?: string,
-    priority: "firstPlan" |"secondplan"|"longDistance"
-    createdDate?: string
+  title?: string,
+  description?: string,
+  dateCompleted?: string,
+  priority?: 'firstPlan' | 'secondplan' | 'longDistance'
+  isDone?: boolean
+  uid?: string
+  createdDate: Date | string
 }
 
 export let tasks = <Task[]>([

@@ -4,4 +4,6 @@ export type Task = {
   dateCompleted?: string,
   priority?: 'firstPlan' | 'secondplan' | 'longDistance'
   isDone?: boolean
+  uid?: string
 }
+

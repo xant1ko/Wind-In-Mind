@@ -90,6 +90,10 @@ function sendData() {
   }).catch(()=>alert('Ошибка! Успех!'))
 }
 
+emitter.on('update',()=>{
+  getTaskList()
+})
+
 function getTaskList() {
   axios
     .get("/api/task/get-list")
