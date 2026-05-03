@@ -10,6 +10,19 @@ export type Task = {
   createdDate: Date | string
 }
 
+export type Note = {
+  createdDate: Date
+  uid: string
+  title: string
+  description: string
+}
+
+export type NoteGroup = {
+  title: string
+  uid: string
+  color: string
+}
+
 export let tasks = <Task[]>([
     // FIRST PLAN - Высокий приоритет (срочные и важные задачи)
     // {
