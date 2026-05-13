@@ -15,12 +15,14 @@ export type Note = {
   uid: string
   title: string
   description: string
+  uid_group: string
 }
 
 export type NoteGroup = {
   title: string
   uid: string
   color: string
+  notes?: Note[]
 }
 
 export let tasks = <Task[]>([

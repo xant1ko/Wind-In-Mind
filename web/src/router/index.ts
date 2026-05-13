@@ -6,14 +6,19 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
-import MainPage from '@/pages/MainPage.vue'
+import TaskPage from '@/pages/TaskPage.vue'
+import NotesPage from '@/pages/NotesPage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      component: MainPage,
+      path: '/task',
+      component: TaskPage,
+    },
+    {
+      path: '/notes',
+      component: NotesPage,
     },
 
   ],

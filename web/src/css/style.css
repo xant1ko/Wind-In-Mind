@@ -39,7 +39,9 @@
 
 }
 
-
+.text-white{
+    color: rgb(255, 255, 255)
+}
 
 .green{
     background-color: rgba(0, 88, 0, 0.404) !important;
@@ -64,18 +66,22 @@
     background-color: var(--color-text-secondary-5);
 } */
 
-.v-btn{
-    background-color: var(--color-elements-2);
-}
-
 .v-card.secondary{
     background-color: var(--bg-color-secondary);
+}
+
+.fill-height{
+    height: 100%;
 }
 
 .d-flex-column{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.aspect-square{
+    aspect-ratio: 1/1;
 }
 
 h1,

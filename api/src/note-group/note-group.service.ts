@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { NoteGroup } from 'src/tempo/types';
+import { Note, NoteGroup } from 'src/tempo/types';
 import clientPromise from '../../lib/mongodb'
 
 
@@ -32,11 +32,51 @@ export class NoteGroupService {
         const client = await clientPromise
 
         const noteGroups = await client
-        .db(DB_NAME)
-        .collection(COLLECTION_NAME)
-        .find({})
-        .toArray()
+            .db(DB_NAME)
+            .collection(COLLECTION_NAME)
+            .find({})
+            .toArray()
 
         return noteGroups
     }
+
+    async getNoteGroup(uid:string): Promise<NoteGroup> {
+        const client = await clientPromise
+
+const uidString = typeof uid === 'object' 
+        ? Object.keys(uid)[0]   // Если объект → берём первый ключ
+        : uid;                   // Если строка → используем как есть
+
+        let noteGroup = await client
+            .db(DB_NAME)
+            .collection(COLLECTION_NAME)
+            .findOne({uid: uidString}) as NoteGroup
+
+        if (!noteGroup) {
+            throw new Error(`Группа с uid "${uidString}" не найдена`);
+        }
+
+        
+        const notes = await client
+        .db(DB_NAME)
+            .collection('notes')
+            .find({uid_group: uidString})
+            .toArray()
+            
+        noteGroup.notes = notes    
+
+        return noteGroup
+    }
+
+      async deleteNoteGroup(noteGroupUid: string): Promise<void> {
+    
+        const client = await clientPromise
+    
+        await client
+        .db(DB_NAME)
+        .collection(COLLECTION_NAME)
+        .deleteOne({uid: noteGroupUid}) as NoteGroup
+
+        return 
+      } 
 }

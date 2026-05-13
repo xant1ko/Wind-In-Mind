@@ -24,6 +24,7 @@ export class NotesService {
     const newNote: Note = {
       title:noteValue.title,
       description: noteValue.description,
+      uid_group: noteValue.uid_group,
       uid: crypto.randomUUID(),
       createdDate: new Date(),
     }
