@@ -1,20 +1,18 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import {clientPromise } from '../lib/mongodb.js'
+import clientPromise from '../lib/mongodb.js'
 
-const checkConnectTodataBase = new Promise((_,reject)=>{
+const checkConnectTodataBase = async ()=>{
   try {
-    const client =  clientPromise
-    const ping =  client.db().admin().ping()
-
-    return "Подключение к МонгоДб прошло успешно!" + ping
-
+    const client = await clientPromise
+    await client.db('test').command({ ping: 1 })
+    console.log("Подключение к МонгоДб прошло успешно!")
 
   } catch (error) {
-    reject( new Error('Не удалосбь подключиться к бд, ' + error)) 
+    throw new Error('Не удалось подключиться к бд, ' + error) 
   }
-})
+}
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -36,23 +34,25 @@ let debounceTimer
 let secondsConnecting = 0
 
 
+function logWithConnectToDb() {
+debounceTimer = setInterval(()=>{
+console.log(`Выполняется подключение к базе данных: ${secondsConnecting} секунд...`);
+secondsConnecting++
+},1000)
+}
 async function mountApp() {
-  function logWithConnectToDb() {
-  debounceTimer = setInterval(()=>{
-  console.log(`Выполняется подключение к базе данных: ${secondsConnecting} секунд...`);
-  secondsConnecting++
-  },1000)
-  }
-  
   try {
-   await checkConnectTodataBase
-   await logWithConnectToDb()
-    await console.log('ГОЙДА!!!');
+    
+    await logWithConnectToDb()
+    await checkConnectTodataBase() 
+    
+  await console.log('ГОЙДА!!!');
     await bootstrap();
-  } catch {
-    await console.error('Не удалось подключииться к базе данных!');
+  } catch (error) {
+    // await console.error('Не удалось подключиться к базе данных!');
+    await console.error(error);
 
-  } finally {
+  } finally {    
     await clearInterval(debounceTimer)
     secondsConnecting = 0
   }
