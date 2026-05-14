@@ -9,9 +9,17 @@ export class TasksController {
 
   @Get('/get-list')
   @ApiOperation({ summary: 'Получить все задачи' })
-  getTasks(): Promise<Object[]> {
-    return this.taskService.getTasks();
+  getAllTasks(): Promise<Object[]> {
+    return this.taskService.getAllTasks();
   }
+
+  @Get('/get-filtered-list')
+  @ApiOperation({ summary: 'Получить все задачи, разделенные на готовые и нет' })
+  getFilteredTasks(): Promise<Object> {
+    return this.taskService.getFilteredTasks();
+  }
+
+// getFilteredTasks
 
   @Post('/create')
   @ApiBody({

@@ -9,7 +9,7 @@ const COLLECTION_NAME = 'tasks'
 export class TasksService {
 
 
-  async getTasks(): Promise<Object[]> {
+  async getAllTasks(): Promise<Object[]> {
     const client = await clientPromise
     const tasks = await client
     .db(DB_NAME)
@@ -17,6 +17,21 @@ export class TasksService {
     .find({})
     .toArray()
     return tasks
+  }
+
+  async getFilteredTasks(): Promise<Object> {
+    const client = await clientPromise
+    const tasks = await client
+    .db(DB_NAME)
+    .collection(COLLECTION_NAME)
+    .find({})
+    .toArray()
+
+  const filteredTasks = {
+    done: tasks.filter(el=>el.isDone === true),
+    unDone: tasks.filter(el=>el.isDone === false)
+  }
+    return filteredTasks
   }
 
   async createTask(taskValue: Task): Promise<Task> {

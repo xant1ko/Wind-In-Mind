@@ -8,7 +8,7 @@ export class NotesController {
 
   @Get('/get-list')
   @ApiOperation({ summary: 'Получить все заметки' })
-  getTasks(): Promise<Object[]> {
+  getAllTasks(): Promise<Object[]> {
     return this.notesService.getNotes();
   }
 
