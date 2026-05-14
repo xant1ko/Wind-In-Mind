@@ -1,3 +1,5 @@
+import axios from "axios"
+
 // const API_PREFIX = '/api/v1'
 const API_PREFIX = '/api'
 
@@ -18,3 +20,6 @@ export const TASK_UPDATE = API_PREFIX + '/task/update'
 export const TASK_GET = API_PREFIX + '/task/get'
 
 
+export function createNoteGroup(value: any) {
+    return axios.post(NOTE_GROUP_CREATE, value)
+}

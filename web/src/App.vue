@@ -22,11 +22,8 @@
 
 <script lang="ts" setup>
 import type { Emitter } from "mitt";
-import axios from "axios";
 import { inject, onMounted, ref } from "vue";
-import { VFooter } from "vuetify/components";
-import appPackageInfo from "@/../package.json";
-import { API_VERSION } from "./api/getObjects";
+// import appPackageInfo from "@/../package.json";
 import HeaderComponent from "./components/HeaderComponent.vue";
 
 type Events = {
@@ -43,8 +40,8 @@ const alertTitle = ref("");
 const alertType = ref<"info" | "error" | "success" | "warning" | undefined>(
   "info",
 );
-const webVersion = appPackageInfo.version;
-const apiVersion = ref<string>("");
+// const webVersion = appPackageInfo.version;
+// const apiVersion = ref<string>("");
 
 const showDialog = ref(false);
 
@@ -52,7 +49,7 @@ function showAlert() {
   showDialog.value = true;
   setTimeout(() => {
     showDialog.value = false;
-  }, 5000);
+  }, 3000);
 }
 
 function getAlertColor(

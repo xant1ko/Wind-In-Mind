@@ -28,6 +28,11 @@
     border: 1px solid rgb(160, 0, 133);
     
 }
+
+.wrap{
+    flex-wrap: wrap;
+}
+
 .borderLongDistance{
     border: 1px solid rgb(0, 29, 160);
     
