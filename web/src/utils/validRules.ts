@@ -1,4 +1,4 @@
-import { emitter } from "@/main"
+import { emitter } from '@/main'
 
 export const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i
 export const phoneNumberPattern = /^((8|\+7)[- ]?)?(\(?\d{3}\)?[- ]?)?[\d\- ]{7,10}$/
@@ -16,25 +16,23 @@ export const valid_rules = {
   isCorrectPassword: (value: string) => passwordPattern.test(value) ? true : 'Неподходящий пароль, нужно минимум 8 символов, хотя бы одна цифра и один специальный знак (.*?[#?!@$%^&*-)',
 }
 
-export function checkDataToValid(model:any, validValue: boolean, callback: Function) {
-
-if (model.color == ''){
-      emitter.emit('show-message',{
-        type: 'error',
-        title: 'Выберите цвет!'
+export function checkDataToValid (model: any, validValue: boolean, callback: Function) {
+  if (model.color == '') {
+    emitter.emit('show-message', {
+      type: 'error',
+      title: 'Выберите цвет!',
     })
     return
-}
+  }
 
-if (validValue) { 
-
-  callback()
-} else {
-      emitter.emit('show-message',{
-        type: 'error',
-        title: 'Проверьте правильность заполнения полей!'
+  if (validValue) {
+    callback()
+  } else {
+    emitter.emit('show-message', {
+      type: 'error',
+      title: 'Проверьте правильность заполнения полей!',
     })
-}
+  }
 }
 
 export function codeRule (value: string) {

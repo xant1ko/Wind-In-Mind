@@ -15,7 +15,7 @@ import vuetify from './vuetify'
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
-export function registerPlugins(app: App) {
+export function registerPlugins (app: App) {
   app.use(vuetify)
   app.use(pinia)
   app.use(router)

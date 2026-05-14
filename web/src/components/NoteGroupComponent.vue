@@ -1,40 +1,38 @@
 <template>
-    <v-col cols="3">
-        <v-menu location="bottom" v-model="isOpenContextMenu" >
-            <template #activator>
-            <div @contextmenu.prevent="openContextMenu()" class="card-wrapper" :style="`background-color:${getNoteColor()}`">
-                <v-card  class="pa-4 aspect-square note-wrapper">
-                    <div class="section-wrapper">
-                        <div class="top-section">
-                            <v-row>
-                                <h2>{{ props.item.title }}</h2>
-                            </v-row>
-                            <v-divider class="my-4"></v-divider>
-                        </div>
-                        <div class="default-section">
-                            
-                        </div>
-                        <div class="bottom-section">
-                            3 заметки
-                        </div>
-                    </div>
-                </v-card>
+  <v-col cols="3">
+    <v-menu v-model="isOpenContextMenu" location="bottom">
+      <template #activator>
+        <div class="card-wrapper" :style="`background-color:${getNoteColor()}`" @contextmenu.prevent="openContextMenu()">
+          <v-card class="pa-4 aspect-square note-wrapper">
+            <div class="section-wrapper">
+              <div class="top-section">
+                <v-row>
+                  <h2>{{ props.item.title }}</h2>
+                </v-row>
+                <v-divider class="my-4" />
+              </div>
+              <div class="default-section" />
+              <div class="bottom-section">
+                3 заметки
+              </div>
             </div>
-        </template>
-        <template #default>
-            <v-list variant="plain">
-                <v-list-item  style="color:red" append-icon="mdi-delete" >
-                    Удалить группу
-                </v-list-item>
-                <v-list-item @click="editNoteGroup()" append-icon="mdi-pencil">
-                    Изменить группу
-                </v-list-item>
-            </v-list>
-        </template>
+          </v-card>
+        </div>
+      </template>
+      <template #default>
+        <v-list variant="plain">
+          <v-list-item append-icon="mdi-delete" style="color:red">
+            Удалить группу
+          </v-list-item>
+          <v-list-item append-icon="mdi-pencil" @click="editNoteGroup()">
+            Изменить группу
+          </v-list-item>
+        </v-list>
+      </template>
     </v-menu>
-    </v-col>
+  </v-col>
 
-    <!-- <v-dialog v-model="isOpenConfirmModal">
+  <!-- <v-dialog v-model="isOpenConfirmModal">
         <v-card class="pa-4">
             <h2>Уверены в своем решении?</h2>
             <div class="d-flex ga-2">
@@ -46,33 +44,30 @@
 </template>
 
 <script setup lang="ts">
-import type { NoteGroup } from '@/utils/types';
-import { ref } from 'vue';
+  import type { NoteGroup } from '@/utils/types'
+  import { ref } from 'vue'
 
-const props = defineProps<{
+  const props = defineProps<{
     item: NoteGroup
-}>()
+  }>()
 
-// const isOpenConfirmModal = ref(false)
+  // const isOpenConfirmModal = ref(false)
 
-const isOpenContextMenu = ref(false)
+  const isOpenContextMenu = ref(false)
 
-const emit = defineEmits(['delete','edit']) 
+  const emit = defineEmits(['delete', 'edit'])
 
-function editNoteGroup(){
-// emit('edit')
-}
+  function editNoteGroup () {
+    // emit('edit')
+  }
 
-
-function getNoteColor() {
+  function getNoteColor () {
     return props.item.color
-}
+  }
 
-function openContextMenu() {
+  function openContextMenu () {
     isOpenContextMenu.value = true
-}
-
-
+  }
 
 </script>
 

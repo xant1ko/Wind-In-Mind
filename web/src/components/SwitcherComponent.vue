@@ -1,6 +1,5 @@
 <template>
-  <div 
-  @click="model = !model"
+  <div
     class="v-field v-field--active v-field--appended v-field--center-affix v-field--variant-solo-filled v-theme--dark v-field--dirty"
     style="
       border-top-left-radius: 4px;
@@ -8,6 +7,7 @@
       border-bottom-right-radius: 4px;
       border-bottom-left-radius: 4px;
     "
+    @click="model = !model"
   >
     <div class="v-field__overlay" />
     <div class="v-field__loader">
