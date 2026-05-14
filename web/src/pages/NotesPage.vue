@@ -4,7 +4,7 @@
             Заметки
         </h1>
         <v-row class="justify-center">
-            <NoteGroupComponent @click="openModal(value.uid)" :item="value" class="note-group"
+            <NoteGroupComponent  @click="openModal(value.uid)" :item="value" class="note-group"
                 v-for="value in noteGroupList" />
             <v-col cols="3">
                 <v-card @click="isEditNoteGroup = !isEditNoteGroup"
@@ -40,6 +40,7 @@
             </v-card>
         </v-form>
     </v-dialog>
+  
 </template>
 
 
@@ -55,6 +56,7 @@ import axios from 'axios';
 import { onMounted, ref } from 'vue';
 
 const valid = ref(false)
+
 
 const isEditNoteGroup = ref(false)
 
@@ -84,7 +86,6 @@ const noteGroupList = ref<NoteGroup[]>()
 
 function openModal(uidGroupLocal?: string) {
     isNoteGroup.value = true
-
     uidGroup.value = uidGroupLocal
 }
 

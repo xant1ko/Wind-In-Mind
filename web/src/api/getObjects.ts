@@ -23,3 +23,7 @@ export const TASK_GET = API_PREFIX + '/task/get'
 export function createNoteGroup(value: any) {
     return axios.post(NOTE_GROUP_CREATE, value)
 }
+
+export function deleteNoteGroup(uid:string){
+return axios.delete(`${NOTE_GROUP_DELETE}/${uid}`)
+}

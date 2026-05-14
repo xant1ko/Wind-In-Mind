@@ -7,7 +7,7 @@
       <v-btn @click="isEditItem = true" class="secondary" icon="mdi-plus" size="large" variant="text" />
       <v-text-field hide-details label="Поиск по задачам" rounded variant="outlined" />
     </div>
-    <section id="first-plan-priority">
+    <section>
       <task-list-component :items="tasks" title="Задачи сейчас" />
     </section>
 

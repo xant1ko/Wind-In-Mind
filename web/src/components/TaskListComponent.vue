@@ -1,12 +1,8 @@
 <template>
   <v-list rounded v-model:opened="isOpen">
-    <v-list-group>
+    <v-list-group prepend-icon="mdi-delete" >
       <template #activator="{ props }">
-        <v-list-item v-bind="props">
-          <div class="d-flex align-center ga-2">
-            <h3>{{ title }}</h3>
-          </div>
-        </v-list-item>
+        <v-list-item prepend-icon="mdi-folder" :title="title" v-bind="props"/>
       </template>
       <v-list-group class="pa-4" value="fuck">
         <div class="d-flex-column">
