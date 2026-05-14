@@ -15,6 +15,7 @@ export const NOTE_GROUP_DELETE = API_PREFIX + '/note-group/delete'
 
 
 export const TASK_GET_LIST = API_PREFIX + '/task/get-list'
+export const TASK_GET_FILTERED_LIST = API_PREFIX + '/task/get-filtered-list'
 export const TASK_CREATE = API_PREFIX + '/task/create'
 export const TASK_UPDATE = API_PREFIX + '/task/update'
 export const TASK_GET = API_PREFIX + '/task/get'

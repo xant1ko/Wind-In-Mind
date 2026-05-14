@@ -27,9 +27,15 @@ export class TasksService {
     .find({})
     .toArray()
 
+
+
   const filteredTasks = {
-    done: tasks.filter(el=>el.isDone === true),
-    unDone: tasks.filter(el=>el.isDone === false)
+    unDone: [
+      ...tasks.filter(el=>(!el.isDone && el.priority == 'firstPlan')),
+      ...tasks.filter(el=>(!el.isDone && el.priority == 'secondplan')),
+      ...tasks.filter(el=>(!el.isDone && el.priority == 'longDistance')),
+    ],
+    done: tasks.filter(el=>!!el.isDone)
   }
     return filteredTasks
   }

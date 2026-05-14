@@ -7,9 +7,14 @@
       <v-btn @click="isEditItem = true" class="secondary" icon="mdi-plus" size="large" variant="text" />
       <v-text-field hide-details label="Поиск по задачам" rounded variant="outlined" />
     </div>
-    <section>
-      <task-list-component :items="tasks" title="Задачи сейчас" />
-    </section>
+    <div v-if="tasks">
+      <section>
+        <task-list-component :items="tasks.unDone" title="Задачи сейчас" />
+      </section>
+      <section>
+        <task-list-component :items="tasks.done" title="Выполненные сегодня" />
+      </section>
+    </div>
 
   </v-container>
 
@@ -34,6 +39,7 @@ import TaskListComponent from "../components/TaskListComponent.vue";
 import type { Task } from "@/utils/types";
 import SwitcherComponent from "@/components/SwitcherComponent.vue";
 import { emitter } from "@/main";
+import { TASK_GET_FILTERED_LIST } from "@/api/getObjects";
 
 const dataToSend = ref<Task>({
   title: "",
@@ -60,7 +66,7 @@ const priorities = [
 
 const isEditItem = ref();
 
-const tasks = ref();
+const tasks = ref<{done:any; unDone: any}>();
 
 function sendData() {
   axios.post('/api/task/create', dataToSend.value).then(() => {
@@ -74,7 +80,7 @@ emitter.on('update', () => {
 
 function getTaskList() {
   axios
-    .get("/api/task/get-list")
+    .get(TASK_GET_FILTERED_LIST)
     .then((r) => {
       tasks.value = r.data;
     })
