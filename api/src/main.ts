@@ -41,8 +41,7 @@ secondsConnecting++
 },1000)
 }
 async function mountApp() {
-  try {
-    
+  try {    
     await logWithConnectToDb()
     await checkConnectTodataBase() 
     

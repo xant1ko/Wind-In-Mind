@@ -16,3 +16,12 @@ start_api:
 .PHONY: start_dev_db
 start_dev_db:
 	cd $(DEV_TOOLS_DIR); ./docker-mongodb.sh $(ARGS)
+
+.PHONY: entity-export-tasks
+entity-export-tasks:
+	nodejs $(DEV_TOOLS_DIR)/exporters/task-exporter.ts $(ARGS)
+
+# TODO Нахуй, в пизду
+.PHONY: dev-db-backup
+dev-db-backup:
+	cd $(DEV_TOOLS_DIR); mongodump  $(ARGS)

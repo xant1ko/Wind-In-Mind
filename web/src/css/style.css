@@ -47,6 +47,10 @@
     background-color: rgba(0, 88, 0, 0.404) !important;
 }
 
+.cursor{
+    cursor: pointer;
+}
+
 .green-text {
     color: green;
 }

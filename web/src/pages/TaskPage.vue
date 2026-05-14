@@ -8,10 +8,7 @@
       <v-text-field hide-details label="Поиск по задачам" rounded variant="outlined" />
     </div>
     <section id="first-plan-priority">
-      <task-list-component :items="tasks" title="Приоритетные задачи" />
-      <!-- <div v-else>
-        <i>Ни одной задачи</i>
-      </div> -->
+      <task-list-component :items="tasks" title="Задачи сейчас" />
     </section>
 
   </v-container>

@@ -2,7 +2,7 @@
   <v-app-bar location="bottom" class="pa-4">
     <template #prepend>
       <v-toolbar-title class="pa-2">
-        <h3 class="ml-4 text-white">Wind In Mind</h3>
+        <h3 @click="router.push('/')" class="cursor ml-4 text-white">Wind In Mind</h3>
       </v-toolbar-title>
     </template>
     <template #default>
