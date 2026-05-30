@@ -1,10 +1,11 @@
 <template>
   <v-card
-    class="pa-4 d-flex justify-space-between align-start"
+    class="pa-4 d-flex justify-space-between align-center"
     :class="[getBorderColor(task.priority), task.isDone ? 'doneTaskCard' : '']"
   >
     <div>
-      <h3>{{ task.title }}</h3>
+      <h3 v-if="task.description">{{ task.title }}</h3>
+      <h2 v-else>{{ task.title }}</h2>
       <p>{{ task.description }}</p>
     </div>
     <div class="d-flex ga-1">
