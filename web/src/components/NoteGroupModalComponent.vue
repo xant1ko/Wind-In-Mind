@@ -105,9 +105,17 @@
     axios.post(NOTE_CREATE, dataToSend.value).then(() => {
       pageValue.value = '1'
       getGroup(props.uidGroup)
+      clearModel()
     }).catch(() => {
       alert('Ошибка!')
     })
+  }
+
+  function clearModel () {
+    dataToSend.value = {
+      title: '',
+      description: '',
+    }
   }
 
   function closeModal () {

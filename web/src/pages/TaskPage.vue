@@ -26,7 +26,7 @@
 
   <v-dialog v-model="isEditItem" max-width="600" scrim="black">
     <v-card class="pa-4">
-      <v-form>
+      <v-form @submit.prevent="sendData()">
         <h2>Создать тасочку</h2>
         <v-text-field
           v-model="dataToSend.title"
@@ -44,7 +44,7 @@
           variant="solo-filled"
         />
         <switcher-component v-model="dataToSend.isDone" label="Готовность" />
-        <v-btn block class="mt-5" @click="sendData()">Отправить</v-btn>
+        <v-btn block class="mt-5" type="submit">Отправить</v-btn>
       </v-form>
     </v-card>
   </v-dialog>
@@ -57,6 +57,7 @@
   import { TASK_GET_FILTERED_LIST } from '@/api/getObjects'
   import SwitcherComponent from '@/components/SwitcherComponent.vue'
   import { emitter } from '@/main'
+  import { showVariableAlert } from '@/utils/alertErrorsUtils'
   import { valid_rules } from '@/utils/validRules'
   import TaskListComponent from '../components/TaskListComponent.vue'
 
@@ -64,7 +65,7 @@
     title: '',
     description: '',
     isDone: false,
-    priority: 'longDistance',
+    priority: 'firstPlan',
     dateCompleted: '',
   })
 
@@ -89,8 +90,26 @@
 
   function sendData () {
     axios.post('/api/task/create', dataToSend.value).then(() => {
-      alert('Успех')
-    }).catch(() => alert('Ошибка! Успех!'))
+      emitter.emit('show-message', {
+        type: 'success',
+        title: 'Задача запланирована!',
+      })
+      isEditItem.value = false
+      getTaskList()
+      clearModel()
+    }).catch(error => {
+      showVariableAlert(error)
+    })
+  }
+
+  function clearModel () {
+    dataToSend.value = {
+      title: '',
+      description: '',
+      isDone: false,
+      priority: 'firstPlan',
+      dateCompleted: '',
+    }
   }
 
   emitter.on('update', () => {
