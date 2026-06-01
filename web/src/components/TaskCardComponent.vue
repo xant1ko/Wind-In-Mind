@@ -1,20 +1,21 @@
 <template>
-  <v-card
-    class="pa-4 d-flex justify-space-between align-center"
-    :class="[getBorderColor(task.priority), task.isDone ? 'doneTaskCard' : '']"
-  >
-    <div>
-      <h3 v-if="task.description">{{ task.title }}</h3>
-      <h2 v-else>{{ task.title }}</h2>
-      <p>{{ task.description }}</p>
-    </div>
-    <div class="d-flex ga-1">
-      <v-btn icon="mdi-check" @click="markTaskIsDone(task.uid)" />
-      <v-btn icon="mdi-delete-outline" @click="deleteTask(task.uid)" />
-      <v-btn icon="mdi-arrow-right" />
+  <div :class="[getBorderColor(task.priority), task.isDone ? 'doneTaskCard' : '']">
+    <v-card
+      class="pa-4 d-flex justify-space-between align-center"
+    >
+      <div>
+        <h2 v-if="task.description">{{ task.title }}</h2>
+        <h2 v-else>{{ task.title }}</h2>
+        <p style="color:#999999">{{ task.description }}</p>
+      </div>
+      <div class="d-flex ga-1">
+        <v-btn icon="mdi-check" @click="markTaskIsDone(task.uid)" />
+        <v-btn icon="mdi-delete-outline" @click="deleteTask(task.uid)" />
+        <v-btn icon="mdi-arrow-right" />
 
-    </div>
-  </v-card>
+      </div>
+    </v-card>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -47,7 +48,6 @@
       case 'longDistance': {
         return 'borderLongDistance'
       }
-    // No default
     }
   }
 </script>

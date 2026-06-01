@@ -21,3 +21,11 @@ export type NoteGroup = {
   notes?: Note[]
   uid?: string
 }
+
+export type Label = {
+  uid?: string
+  title: string
+  description: string
+  color: string
+  type: 'task'
+}

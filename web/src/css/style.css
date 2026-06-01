@@ -22,26 +22,33 @@
 }
 /* 'firstPlan' | 'secondplan' | 'longDistance' */
 .borderFirstPlan{
-    border: 1px solid rgb(160, 0, 0);
+    background-color: rgb(160, 0, 0);
+    border-radius: 8px;
 }
 .borderSecondplan{
-    border: 1px solid rgb(160, 0, 133);
-    
+    background-color: rgb(160, 0, 133);
+    border-radius: 8px;
+}
+
+.borderLongDistance{
+    background-color: rgb(0, 29, 160);
+    border-radius: 8px;
+}
+
+.borderFirstPlan .v-card,
+.borderSecondplan .v-card,
+.borderLongDistance .v-card{
+    transform: translateX(5px);
 }
 
 .wrap{
     flex-wrap: wrap;
 }
 
-.borderLongDistance{
-    border: 1px solid rgb(0, 29, 160);
-    
-}
 
 
 .doneTaskCard{
     border: 1px solid rgb(26, 26, 26);
-
 }
 
 .text-white{

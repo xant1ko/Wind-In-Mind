@@ -63,6 +63,7 @@
   import NoteGroupModalComponent from '@/components/NoteGroupModalComponent.vue'
   import { emitter } from '@/main'
   import { showVariableAlert } from '@/utils/alertErrorsUtils'
+  import { colors } from '@/utils/generalUtils'
   import { checkDataToValid, valid_rules } from '@/utils/validRules'
 
   const valid = ref(false)
@@ -77,19 +78,6 @@
     title: '',
     color: '',
   })
-
-  const colors = [
-    { title: 'Красный', color: '#FF4D4D' },
-    { title: 'Синий', color: '#4D79FF' },
-    { title: 'Зеленый', color: '#4DFF88' },
-    { title: 'Желтый', color: '#FFE54D' },
-    { title: 'Фиолетовый', color: '#B84DFF' },
-    { title: 'Оранжевый', color: '#FFA64D' },
-    { title: 'Розовый', color: '#FF6B9E' },
-    { title: 'Голубой', color: '#4DE1FF' },
-    { title: 'Серый', color: '#A9A9A9' },
-    { title: 'Бирюзовый', color: '#4DFFD9' },
-  ]
 
   const noteGroupList = ref<NoteGroup[]>()
 

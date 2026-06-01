@@ -6,6 +6,7 @@
 
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import LabelPage from '@/pages/LabelPage.vue'
 import MainPage from '@/pages/MainPage.vue'
 import NotesPage from '@/pages/NotesPage.vue'
 import TaskPage from '@/pages/TaskPage.vue'
@@ -24,6 +25,10 @@ const router = createRouter({
     {
       path: '/notes',
       component: NotesPage,
+    },
+    {
+      path: '/labels',
+      component: LabelPage,
     },
 
   ],

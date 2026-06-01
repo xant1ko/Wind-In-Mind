@@ -51,5 +51,10 @@
       title: 'Заметки',
       path: '/notes',
     },
+    {
+      icon: 'mdi-label-outline',
+      title: 'Лейблы',
+      path: '/labels',
+    },
   ]
 </script>

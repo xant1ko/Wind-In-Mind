@@ -7,7 +7,7 @@
       <v-list-group class="pa-4" value="fuck">
         <div class="d-flex-column">
           <task-card-component v-for="task in items" v-if="items.length>0" :task="task" />
-          <i v-else>Ни одной задачи! Бездельник, блять!</i>
+          <i v-else>Ни одной задачи! Бездельник!</i>
         </div>
       </v-list-group>
     </v-list-group>
