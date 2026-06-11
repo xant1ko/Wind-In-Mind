@@ -1,5 +1,12 @@
 
 
+export interface Label {
+  uid?: string;
+  name: string;
+  color: string;
+  createdDate: Date | string;
+}
+
 export type Task = {
   title?: string,
   description?: string,
@@ -7,6 +14,7 @@ export type Task = {
   priority?: 'firstPlan' | 'secondplan' | 'longDistance'
   isDone?: boolean
   uid?: string
+  labels?: Label[]
   createdDate: Date | string
 }
 
