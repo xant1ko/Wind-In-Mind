@@ -13,9 +13,9 @@
       />
       <v-text-field hide-details label="Поиск по задачам" rounded variant="outlined" />
     </div>
-    <div v-if="tasks">
-      <section>
-        <task-list-component :items="tasks.unDone" title="Задачи сейчас" />
+    <div class="d-flex flex-column ga-4" v-if="tasks">
+      <section class="d-flex flex-column ga-2">
+          <task-card-component v-for="task in tasks.unDone" v-if="tasks.unDone.length > 0" :task="task" />
       </section>
       <section>
         <task-list-component :items="tasks.done" title="Выполненные сегодня" />
@@ -60,6 +60,7 @@
   import { showVariableAlert } from '@/utils/alertErrorsUtils'
   import { valid_rules } from '@/utils/validRules'
   import TaskListComponent from '../components/TaskListComponent.vue'
+import TaskCardComponent from '@/components/TaskCardComponent.vue'
 
   const dataToSend = ref<Task>({
     title: '',
